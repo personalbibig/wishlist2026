@@ -391,6 +391,8 @@ section.sheet::before{inset:clamp(26px,3vw,44px) clamp(10px,2.6vw,36px)!importan
 section.sheet::after{top:calc(clamp(26px,3vw,44px) - 22px)!important}
 #indice{padding-bottom:clamp(64px,8vw,120px)!important}
 .grid:has(> .st:nth-child(6):last-child){max-width:760px;margin-inline:auto}
+.mwhite{position:absolute;inset:0;background:#fff;opacity:0;z-index:0;pointer-events:none}
+.mstage .open{z-index:1}
 </style>
 </head>
 <body>
@@ -430,6 +432,7 @@ section.sheet::after{top:calc(clamp(26px,3vw,44px) - 22px)!important}
 
 <section id="mami" class="mscene">
  <div class="mstage">
+  <div class="mwhite" id="mwhite" aria-hidden="true"></div>
   <div class="open" id="open">
     <div class="flap"></div>
     <div class="letter2" id="letter2"><div class="lc" id="lc">
@@ -629,6 +632,8 @@ const fr=()=>{tk=false;
  document.getElementById('topnav').classList.toggle('gone',p>.42&&r.top<0);
  /* zoom: the closing grows to the centre of the screen */
  const z=ez(cl((p-.72)/.22));
+ document.getElementById('mwhite').style.opacity=cl((p-.62)/.12);
+ for(const e of [ef,eb,fl])e.style.opacity=cl(1-(p-.5)/.1);
  o.style.transform='';
  L.style.boxShadow=z>0?'0 100vh 0 0 #fff, 0 -100vh 0 0 #fff':'';
  for(const e of [ef,eb,fl])e.style.opacity=cl(1-z*6);
